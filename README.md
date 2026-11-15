@@ -133,13 +133,6 @@ demo/
 data/ (created at runtime) cache/ (LLM reports), sales.jsonl, portfolio.json
 ```
 
-## What Suci does (not the agent's job)
-
-- Record the **video demo** (see DEMO.md for the exact steps).
-- **Post on X** with the video, tagging @buildonbase.
-- **Submit the Google Form** (link on base.org/stocksmaxxing) with the X post link + track.
-- If the entry wins: identity verification (ID, W-8, wallet) — his.
-
 ## Limitations (honest)
 
 - Profit allocation to tokenized stocks is a **paper ledger**, not an on-chain swap
