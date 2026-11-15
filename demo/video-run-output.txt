@@ -1,0 +1,99 @@
+== starting server on :8787 ==
+== health ==
+{
+  "ok": true,
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "seller": "0xDd1c7EB50e3a3232BB449cA894B85d7c7D459a25",
+  "sellerEth": "0.099999229488588911",
+  "sellerUsdc": "0.1",
+  "blockNumber": 59149412
+}
+== catalog ==
+{
+  "service": "Stocks Maxxing — Agentic Stock Finance (demo)",
+  "concept": "Sell stock research as a service. Pay test USDC via x402 (Base Sepolia testnet), receive an analyst research report. Profits are allocated to tokenized stocks.",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "usdc": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+  "priceUsdc": "0.10",
+  "payTo": "0xDd1c7EB50e3a3232
+== buy AAPL report (402 -> sign -> report) ==
+[client] buyer: 0x9FC34a466B5CB61f0BF8219Dd24B0C516B69B9D9
+[client] requesting research for AAPL ...
+[client] got 402: pay 100000 base units USDC (0.1 USDC) to 0xDd1c7EB50e3a3232BB449cA894B85d7c7D459a25 on base-sepolia
+[client] buyer USDC balance: 19.9 USDC
+[client] signed EIP-3002 authorization (nonce 0xb0b26abd...)
+[client] server replied HTTP 200
+[client] payment verified: true; settlement: settled tx 0xdab3fbbd0785462b02ec98950a6b9acb3fbf5b2098355286a3c368f73d7dfa78
+[client] report engine: gemini-2.5-flash (cached: true)
+[client] report saved to /home/hatch/workspace/tools/stocks-maxxing/agent/demo/last-report-AAPL.md
+--- report ---
+**AAPL: Bullish** – Apple Inc. demonstrates strong short-term momentum, trading just shy of its 52-week high.
+
+**Key Drivers:**
+*   **Robust Price Momentum:** AAPL surged 4.06% today and gained 1.59% over the past five days, reflecting strong investor demand.
+*   **Proximity to Peak:** The stock is trading only 1.3% below its 52-week high of $360.83, signaling strong market confidence and potential for a breakout.
+*   **Solid Trading Volume:** Today's volume is near its 5-day average, indicating that the recent price appreciation is supported by consistent market activity.
+
+**Risks:**
+*   **Valuation at Highs:** Trading at the upper end of its 52-week range suggests the stock could be priced for perfection, potentially limiting significant near-term upside and increasing susceptibility to profit-taking.
+*   **Potential for Reversal:** After a strong daily gain and proximity to a 52-week high, there is a risk of a pullback if the stock fails to sustain momentum or buyers exhaust themselves.
+
+**What to Watch Next:**
+Investors should monitor AAPL's ability to decisively break above and sustain levels beyond its 52-week high ($360.83). Continued strong volume will be crucial in confirming any further upward trend.
+== portfolio (profit -> tokenized stocks) ==
+{
+  "network": "Base Sepolia",
+  "note": "Paper ledger: earnings are notionally allocated to tokenized stocks. On-chain swap to real tokenized equities is wired in once a Base Sepolia DEX pool exists (see README).",
+  "totalSales": 2,
+  "totalEarnedBaseUnits": "200000",
+  "totalEarnedUsdc": "0.200000",
+  "allocations": [
+    {
+      "ticker": "AAPL",
+      "tokenized": "AAPL (tokenized equity, Base)",
+      "amountBaseUnits": "80000",
+      "amountUsdc": "0.080000"
+    },
+    {
+      "ticker": "NVDA",
+      "tokenized": "NVDA (tokenized equity, Base)",
+      "amountBaseUnits": "50000",
+      "amountUsdc": "0.050000"
+    },
+    {
+      "ticker": "TSLA",
+      "tokenized": "TSLA (tokenized equity, Base)",
+      "amountBaseUnits": "40000",
+      "amountUsdc": "0.040000"
+    },
+    {
+      "ticker": "MSFT",
+      "tokenized": "MSFT (tokenized equity, Base)",
+      "amountBaseUnits": "30000",
+      "amountUsdc": "0.030000"
+    }
+  ],
+  "sales": [
+    {
+      "id": "sale-1794751552697",
+      "time": "2026-11-15T14:05:52.697Z",
+      "ticker": "AAPL",
+      "buyer": "0x9FC34a466B5CB61f0BF8219Dd24B0C516B69B9D9",
+      "amountUsdc": "0.100000",
+      "settlement": "settled",
+      "txHash": "0x5659d68341233755339619c02ed52ac8bfd3991310c2cdebcf9a922e32f8524b"
+    },
+    {
+      "id": "sale-1794751753612",
+      "time": "2026-11-15T14:09:13.612Z",
+      "ticker": "AAPL",
+      "buyer": "0x9FC34a466B5CB61f0BF8219Dd24B0C516B69B9D9",
+      "amountUsdc": "0.100000",
+      "settlement": "settled",
+      "txHash": "0xdab3fbbd0785462b02ec98950a6b9acb3fbf5b2098355286a3c368f73d7dfa78"
+    }
+  ]
+}
+== demo done (server log: demo/server.log) ==

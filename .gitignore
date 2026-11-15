@@ -1,0 +1,7 @@
+demo/*-key.json
+data/
+node_modules/
+.env
+demo/server.log
+out/
+cache/
