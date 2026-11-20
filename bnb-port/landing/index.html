@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StockSage on BNB Chain — AI stock research, sold on-chain</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #1a1a1a; }
+  h1 { font-size: 1.8rem; } h2 { font-size: 1.2rem; margin-top: 2rem; }
+  code { background: #f0f0f0; padding: 0.1em 0.35em; border-radius: 4px; font-size: 0.9em; word-break: break-all; }
+  .price { border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; }
+  .warn { background: #fff8e1; border-left: 4px solid #f0a500; padding: 0.75rem 1rem; }
+  .muted { color: #555; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<h1>StockSage on BNB Chain</h1>
+<p>AI stock research, sold on-chain. Pay USDC to a smart contract, get an
+analyst report — live market data plus a Gemini-written note, cached per
+ticker per day.</p>
+
+<h2>Price</h2>
+<div class="price"><strong>0.05 USDC</strong> per report — if your wallet holds a
+SPACE ID Agent ID (50% off)</div>
+<div class="price"><strong>0.10 USDC</strong> per report — full price, no Agent ID</div>
+<p>The discount is decided on-chain by the contract itself
+(<code>priceFor()</code> reads your Agent ID balance). A purchase unlocks that
+ticker's report for 24 hours.</p>
+
+<h2>How it works</h2>
+<ol>
+  <li>Ask the server for a quote: <code>GET /quote?ticker=AAPL&amp;buyer=0x…</code></li>
+  <li>Approve <strong>exactly</strong> the quoted USDC amount to the StockSageAccess contract. Never unlimited.</li>
+  <li>Call <code>purchase("AAPL")</code>. The contract pulls exactly the approved amount and records your purchase on-chain.</li>
+  <li>Fetch <code>GET /research?ticker=AAPL&amp;buyer=0x…</code> — the server verifies your purchase on-chain and serves the report.</li>
+</ol>
+
+<h2>Contracts (BNB Chain, chain 56)</h2>
+<ul>
+  <li>StockSageAccess: <code><a href="https://bscscan.com/address/0xc6cf59c62b7c4d24DaFB221Ce642D0a1EF783bf6">0xc6cf59c62b7c4d24DaFB221Ce642D0a1EF783bf6</a></code></li>
+  <li>USDC (Binance-Peg, 18 decimals): <code>0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d</code></li>
+  <li>Agent ID (SPACE ID, ERC-721): <code>0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</code></li>
+</ul>
+<p class="muted">Contract source: <a href="https://github.com/Sucimaru/stocksage">github.com/Sucimaru/stocksage</a>
+(<code>bnb-port/</code>). Verified on BscScan after deploy. The owner can only
+withdraw collected USDC and change prices (holder price always below full price).
+No other owner powers; no fee, tax, mint, or blacklist.</p>
+<p class="muted">Note: Binance-Peg USDC on BSC does not support EIP-3002, so payment is
+plain ERC20 approve + purchase — never a signed authorization.</p>
+
+<h2>Universe</h2>
+<p>AAPL, NVDA, TSLA, MSFT, AMZN, GOOGL, META, AMD, NFLX, PLTR.</p>
+
+<div class="warn"><strong>Risk warning.</strong> StockSage sells research notes, not
+investment advice. Stock prices can go down as well as up; past performance does not
+guarantee future results. Do your own research before any trade.</div>
+
+<p class="muted">Built for the Agent ID Hackathon (Binance Wallet + BNB Chain).
+StockSage is an independent project and is not affiliated with or endorsed by Binance.</p>
+</body>
+</html>
